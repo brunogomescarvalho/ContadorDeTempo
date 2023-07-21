@@ -90,6 +90,7 @@
             singular.Add(MedidaTempoEnum.horas, "hora");
             singular.Add(MedidaTempoEnum.dias, "dia");
             singular.Add(MedidaTempoEnum.semanas, "semana");
+            singular.Add(MedidaTempoEnum.meses, "mês");
             singular.Add(MedidaTempoEnum.anos, "ano");
         }
     }
