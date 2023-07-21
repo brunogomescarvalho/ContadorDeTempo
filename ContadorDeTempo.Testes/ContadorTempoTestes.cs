@@ -12,13 +12,13 @@ namespace ContadorDeTempo.Testes
         }
 
         [TestMethod]
-        public void Deve_retornar_30_segundos()
+        public void Deve_retornar_58_segundos()
         {
-            var dataCalcular = DateTime.Now.AddSeconds(-30);
+            var dataCalcular = DateTime.Now.AddSeconds(-58);
 
             string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
 
-            Assert.AreEqual($"O teste foi realizado a 30 segundos", tempoCalculado);
+            Assert.AreEqual($"O teste foi realizado a 58 segundos", tempoCalculado);
 
         }
 
@@ -33,6 +33,18 @@ namespace ContadorDeTempo.Testes
 
         }
 
+
+        [TestMethod]
+        public void Deve_retornar_1_minuto()
+        {
+            var dataCalcular = DateTime.Now.AddMinutes(-1);
+
+            string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
+
+            Assert.AreEqual($"O teste foi realizado a 1 minuto", tempoCalculado);
+
+        }
+
         [TestMethod]
         public void Deve_retornar_cinco_dias()
         {
@@ -41,6 +53,17 @@ namespace ContadorDeTempo.Testes
             string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
 
             Assert.AreEqual($"O teste foi realizado a 5 dias", tempoCalculado);
+
+        }
+
+        [TestMethod]
+        public void Deve_retornar_1_dia()
+        {
+            var dataCalcular = DateTime.Now.AddDays(-1);
+
+            string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
+
+            Assert.AreEqual($"O teste foi realizado a 1 dia", tempoCalculado);
 
         }
 
@@ -56,15 +79,59 @@ namespace ContadorDeTempo.Testes
 
         }
 
+        [TestMethod]
+        public void Deve_retornar_1_semana()
+        {
+            var dataCalcular = DateTime.Now.AddDays(-7);
+
+            string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
+
+            Assert.AreEqual($"O teste foi realizado a 1 semana", tempoCalculado);
+
+        }
+
 
         [TestMethod]
         public void Deve_retornar_seis_meses()
         {
-            var dataCalcular = DateTime.Now.AddDays(-5);
+            var dataCalcular = DateTime.Now.AddMonths(-6);
 
             string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
 
-            Assert.AreEqual($"O teste foi realizado a 5 dias", tempoCalculado);
+            Assert.AreEqual($"O teste foi realizado a 6 meses", tempoCalculado);
+
+        }
+
+        [TestMethod]
+        public void Deve_retornar_1_mes()
+        {
+            var dataCalcular = DateTime.Now.AddMonths(-1);  
+
+            string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
+
+            Assert.AreEqual($"O teste foi realizado a 1 mês", tempoCalculado);
+
+        }
+
+        [TestMethod]
+        public void Deve_retornar_1_ano()
+        {
+            var dataCalcular = DateTime.Now.AddYears(-1);
+
+            string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
+
+            Assert.AreEqual($"O teste foi realizado a 1 ano", tempoCalculado);
+
+        }
+
+        [TestMethod]
+        public void Deve_retornar_3_anos()
+        {
+            var dataCalcular = DateTime.Now.AddYears(-3);
+
+            string tempoCalculado = contadorTempo.ObterTempoEmString(dataCalcular);
+
+            Assert.AreEqual($"O teste foi realizado a 3 anos", tempoCalculado);
 
         }
     }

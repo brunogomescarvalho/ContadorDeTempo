@@ -2,10 +2,12 @@
 {
     public class ContadorTempo
     {
-        private MedidaTempoEnum medidaTempo;
-
+        private const int SEMANA = 7;
+        private const int MES = 30;
+        private const int ANO = 365;
         private long tempo;
 
+        private MedidaTempoEnum medidaTempo;
         private Dictionary<MedidaTempoEnum, string> plural;
         private Dictionary<MedidaTempoEnum, string> singular;
 
@@ -22,7 +24,7 @@
 
             Dictionary<MedidaTempoEnum, string> lista;
 
-            lista = tempo > 0 ? plural : singular;
+            lista = tempo > 1 ? plural : singular;
 
             string medida = lista[medidaTempo];
 
@@ -49,20 +51,25 @@
                 medidaTempo = MedidaTempoEnum.horas;
                 tempo = diferenca.Hours;
             }
-            else if (diferenca < TimeSpan.FromDays(7))
+            else if (diferenca < TimeSpan.FromDays(SEMANA))
             {
                 medidaTempo = MedidaTempoEnum.dias;
                 tempo = diferenca.Days;
             }
-            else if (diferenca < TimeSpan.FromDays(30))
+            else if (diferenca < TimeSpan.FromDays(MES))
             {
                 medidaTempo = MedidaTempoEnum.semanas;
-                tempo = (long)diferenca.TotalDays / 7;
+                tempo = (long)diferenca.TotalDays / SEMANA;
+            }
+            else if (diferenca < TimeSpan.FromDays(ANO))
+            {
+                medidaTempo = MedidaTempoEnum.meses;
+                tempo = (long)diferenca.TotalDays / MES;
             }
             else
             {
-                medidaTempo = MedidaTempoEnum.meses;
-                tempo = (long)diferenca.TotalDays / 30;
+                medidaTempo = MedidaTempoEnum.anos;
+                tempo = (long)diferenca.TotalDays / ANO;
             }
         }
 
@@ -77,12 +84,13 @@
             plural.Add(MedidaTempoEnum.dias, "dias");
             plural.Add(MedidaTempoEnum.semanas, "semanas");
             plural.Add(MedidaTempoEnum.meses, "meses");
+            plural.Add(MedidaTempoEnum.anos, "anos");
 
             singular.Add(MedidaTempoEnum.minutos, "minuto");
             singular.Add(MedidaTempoEnum.horas, "hora");
             singular.Add(MedidaTempoEnum.dias, "dia");
             singular.Add(MedidaTempoEnum.semanas, "semana");
-            singular.Add(MedidaTempoEnum.meses, "mês");
+            singular.Add(MedidaTempoEnum.anos, "ano");
         }
     }
 
@@ -95,7 +103,8 @@
         horas,
         dias,
         semanas,
-        meses
+        meses,
+        anos
     }
 
 }
